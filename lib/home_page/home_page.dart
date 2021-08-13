@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:covid_app_sample/model/covid_data_model.dart';
+import 'package:covid_app_sample/repositories/covid_data_reporitory_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,6 +19,12 @@ class _HomePageState extends State<HomePage> {
     );
     final result = CovidDataModel.fromJson(json.decode(response.body));
     return result;
+  }
+
+  @override
+  void initState() {
+    CovidDatarepositoryImpl().getCovidData();
+    super.initState();
   }
 
   @override
